@@ -32,5 +32,9 @@ On the Settings page, one can change between Forest and Sea themes. Additionally
 - [x] MVVM Pattern
 - [x] UserDefaults
 
+## Screenshots
 
-
+![SunnySeaAshShatibi](https://github.com/GarbuJohnG/MyWeatherApp/assets/60701720/60313f43-3d1d-4155-9120-6a82badfedf3)
+![SunnyForestAshShatibi](https://github.com/GarbuJohnG/MyWeatherApp/assets/60701720/770d5945-f159-480a-9ae6-7443c966ef25)
+![CloudySeaCupertino](https://github.com/GarbuJohnG/MyWeatherApp/assets/60701720/5e0e8869-2728-4215-a906-0da7132b2189)
+![CloudyForestCupertino](https://github.com/GarbuJohnG/MyWeatherApp/assets/60701720/24fe036a-5364-41fa-ba3c-a65bf59e7b6d)
