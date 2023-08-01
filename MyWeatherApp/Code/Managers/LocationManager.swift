@@ -20,7 +20,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func initializeLocation() {
         locationManager = CLLocationManager()
-        locationManager.delegate = self;
+        locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
@@ -38,6 +38,22 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
                 prevrefreshlatitude = CLLocation(latitude: latitude, longitude: longitude)
                 notifyLocationFound()
             }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        if locationManager.authorizationStatus != .notDetermined {
+            // Post failure error only when authorization status is determined
+            NotificationCenter.default.post(name: Notification.Name(LOC_ERROR), object: nil)
+        }
+    }
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        switch manager.authorizationStatus {
+        case .denied,.restricted:
+            NotificationCenter.default.post(name: Notification.Name(LOC_ERROR), object: nil)
+        default:
+            return
         }
     }
     

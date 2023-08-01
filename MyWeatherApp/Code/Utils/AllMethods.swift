@@ -31,7 +31,7 @@ class AllMethods {
     
     static func get_weather_image(name: String) -> UIImage {
         var imageName = ""
-        var theme = UserDefaults.standard.string(forKey: THEME_SETTING)
+        let theme = UserDefaults.standard.string(forKey: THEME_SETTING)
         
         switch name {
         case "Clear":
@@ -48,7 +48,7 @@ class AllMethods {
     
     static func get_weather_color(name: String) -> UIColor {
         var colorName = ""
-        var theme = UserDefaults.standard.string(forKey: THEME_SETTING)
+        let theme = UserDefaults.standard.string(forKey: THEME_SETTING)
         switch name {
         case "Clear":
             colorName = theme == "Sea" ? "seaColor" : "sunnyColor"

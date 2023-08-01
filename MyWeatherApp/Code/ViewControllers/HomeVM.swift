@@ -45,6 +45,8 @@ class HomeVM {
     
     init() { }
     
+    // Attatch Forecast Event Lstener
+    
     func attachListViewEventListener(loadData: AnyPublisher<Void, Never>) {
         self.loadData = loadData
         self.loadData
@@ -70,6 +72,8 @@ class HomeVM {
             .store(in: &subscriptions)
     }
     
+    // Attatch Current Weather Event Lstener
+    
     func attachWeatherViewEventListener(loadData: AnyPublisher<Void, Never>) {
         self.loadWeatherData = loadData
         self.loadWeatherData
@@ -94,7 +98,7 @@ class HomeVM {
             .store(in: &subscriptions)
     }
     
-    // Prepare the tableDataSource
+    // Prepare TableDataSource
     
     private func prepareTableDataSource() {
         tableDataSource.append(contentsOf: forecastCells())

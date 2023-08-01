@@ -40,7 +40,8 @@ class HomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBindings()
+        addLocObservers()
+        addHomeVCBindings()
         configureUI()
         
         ActivityIndicator.shared.showActivity(onView: view)
@@ -208,7 +209,7 @@ class HomeVC: UIViewController {
         
     }
     
-    private func setupBindings() {
+    private func addHomeVCBindings() {
         
         viewModel.attachListViewEventListener(loadData: loadListDataSubject.eraseToAnyPublisher())
         viewModel.attachWeatherViewEventListener(loadData: loadWeatherDataSubject.eraseToAnyPublisher())
@@ -235,8 +236,13 @@ class HomeVC: UIViewController {
         }
         .store(in: &subscriptions)
         
+    }
+    
+    func addLocObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(self.locationAvailable(_:)), name: Notification.Name(LOC_FOUND), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.locationError(_:)), name: Notification.Name(LOC_ERROR), object: nil)
         
+        LocationManager.shared.initializeLocation()
     }
     
     // MARK: - Handlers
@@ -245,6 +251,14 @@ class HomeVC: UIViewController {
     @objc private func locationAvailable(_ notification: Notification) {
         guard !isRefreshInProgress else { return }
         refreshScreen()
+    }
+    
+    @objc private func locationError(_ notification: Notification) {
+        ActivityIndicator.shared.hideActivity()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { [self] in
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(showLocationError), object: nil)
+            perform(#selector(showLocationError), with: nil, afterDelay: 0.3)
+        })
     }
     
     @objc private func openSettings() {
@@ -260,9 +274,31 @@ class HomeVC: UIViewController {
         present(vc, animated: true)
     }
     
+    @objc func showLocationError() {
+        guard let topController = UIApplication.topViewController() else { return }
+        let alert = UIAlertController(title: "Location Error", message: "An error occured accessing your location. Kindly check your location settings.", preferredStyle: .alert)
+        let okBtn = UIAlertAction(title: "Settings", style: .cancel, handler: { _ in
+            AlertManager().dismissAnyAlertsPresent()
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl)
+            }
+        })
+        let cancelBtn = UIAlertAction(title: "Cancel", style: .default, handler: { _ in
+            AlertManager().dismissAnyAlertsPresent()
+        })
+        alert.addAction(okBtn)
+        alert.addAction(cancelBtn)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: {
+            topController.present(alert, animated: true, completion: nil)
+        })
+    }
+    
     // Refresh the page
     private func refreshScreen() {
-        setupBindings()
+        addHomeVCBindings()
         isRefreshInProgress = true
         loadListDataSubject.send()
         loadWeatherDataSubject.send()

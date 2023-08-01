@@ -18,6 +18,7 @@
 		5218C7D12A77BC1700080A29 /* UIViewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218C7D02A77BC1700080A29 /* UIViewControllerExt.swift */; };
 		5218C7D42A77CF2E00080A29 /* CurrentTempsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218C7D32A77CF2E00080A29 /* CurrentTempsView.swift */; };
 		5218C7D72A78227A00080A29 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218C7D62A78227A00080A29 /* SettingsVC.swift */; };
+		5218C7D92A78E76700080A29 /* UIApplicationExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5218C7D82A78E76700080A29 /* UIApplicationExt.swift */; };
 		52890E282A72722F0038F057 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52890E272A72722F0038F057 /* AppConstants.swift */; };
 		52890E2B2A72731D0038F057 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52890E2A2A72731D0038F057 /* AlertManager.swift */; };
 		52890E2D2A7273F40038F057 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52890E2C2A7273F40038F057 /* LocationManager.swift */; };
@@ -71,6 +72,7 @@
 		5218C7D02A77BC1700080A29 /* UIViewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExt.swift; sourceTree = "<group>"; };
 		5218C7D32A77CF2E00080A29 /* CurrentTempsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTempsView.swift; sourceTree = "<group>"; };
 		5218C7D62A78227A00080A29 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
+		5218C7D82A78E76700080A29 /* UIApplicationExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationExt.swift; sourceTree = "<group>"; };
 		52890E272A72722F0038F057 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		52890E2A2A72731D0038F057 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		52890E2C2A7273F40038F057 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			children = (
 				52890E4E2A728D830038F057 /* NSLayoutExt.swift */,
 				52890E502A728DAC0038F057 /* NSObjectExt.swift */,
+				5218C7D82A78E76700080A29 /* UIApplicationExt.swift */,
 				52890E4A2A728C1D0038F057 /* UITableViewExt.swift */,
 				52890E522A728DE60038F057 /* UIViewExt.swift */,
 				5218C7D02A77BC1700080A29 /* UIViewControllerExt.swift */,
@@ -409,6 +412,7 @@
 				52890E4B2A728C1D0038F057 /* UITableViewExt.swift in Sources */,
 				52890E322A7279450038F057 /* NetworkMonitor.swift in Sources */,
 				52890E362A727B5E0038F057 /* NetworkManager.swift in Sources */,
+				5218C7D92A78E76700080A29 /* UIApplicationExt.swift in Sources */,
 				5218C7CF2A7795A900080A29 /* ActivityIndicator.swift in Sources */,
 				5218C7D72A78227A00080A29 /* SettingsVC.swift in Sources */,
 				52890E2B2A72731D0038F057 /* AlertManager.swift in Sources */,
