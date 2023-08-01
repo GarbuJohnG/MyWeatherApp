@@ -42,15 +42,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        if locationManager.authorizationStatus != .notDetermined {
-            // Post failure error only when authorization status is determined
+        // Post failure error only when authorization status is determined
+        switch locationManager.authorizationStatus {
+        case .notDetermined:
+            debugPrint("Nothing to do for now")
+        default:
             NotificationCenter.default.post(name: Notification.Name(LOC_ERROR), object: nil)
         }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         switch manager.authorizationStatus {
-        case .denied,.restricted:
+        case .denied:
             NotificationCenter.default.post(name: Notification.Name(LOC_ERROR), object: nil)
         default:
             return
