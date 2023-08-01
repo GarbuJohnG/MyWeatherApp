@@ -2,5 +2,7 @@
 
 # Overview
 
-Your app should let the user input a zipcode, then see the 7-day forecast.  Selecting a forecast should display more information about the weather for that day, along with a random image of the city matching the zip code.  The user can favorite the image, then view a list of all of their favorited images.
+MyWeatherApp has been developed as a fulfilment of a Mobile assessment showcasing knowledge in IOS Development.
+
+The App provides the Weather of a user's current location alongside a 5 day 3 hourly forecast of the same location. It also has two themes Forest and Sea with weather changes of a location being visually represented via the images and icons provides.
 
